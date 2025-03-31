@@ -1,0 +1,51 @@
+﻿@model GBC_Travel_Group_54.Models.Flight
+
+@{
+    ViewData["Title"] = "Edit Flight";
+}
+
+<h2>Edit Flight</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="FlightId" />
+    <div class="form-group">
+        <label asp-for="DepartureAirport" class="control-label">Departure Airport:</label>
+        <input asp-for="DepartureAirport" class="form-control" />
+        <span asp-validation-for="DepartureAirport" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ArrivalAirport" class="control-label">Arrival Airport:</label>
+        <input asp-for="ArrivalAirport" class="form-control" />
+        <span asp-validation-for="ArrivalAirport" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Airline" class="control-label">Airline:</label>
+        <input asp-for="Airline" class="form-control" />
+        <span asp-validation-for="Airline" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DepartureDateTime" class="control-label">Departure Date and Time:</label>
+        <input asp-for="DepartureDateTime" type="datetime-local" class="form-control" />
+        <span asp-validation-for="DepartureDateTime" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ArrivalDateTime" class="control-label">Arrival Date and Time:</label>
+        <input asp-for="ArrivalDateTime" type="datetime-local" class="form-control" />
+        <span asp-validation-for="ArrivalDateTime" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price" class="control-label">Price:</label>
+        <input asp-for="Price" type="number" step="0.01" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-action="ViewAllFlights" class="btn btn-warning">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

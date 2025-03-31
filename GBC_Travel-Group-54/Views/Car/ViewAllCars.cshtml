@@ -1,0 +1,85 @@
+﻿@model IEnumerable<GBC_Travel_Group_54.Models.Car>
+@{
+    ViewData["Title"] = "Admin Car Index";
+}
+
+<h2>Available Cars</h2>
+<a asp-action="Create" class="btn btn-primary">Add Car</a>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Car Rental System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <form asp-controller="Car" asp-action="SearchCars" method="post" class="form-inline ml-auto">
+            <input type="number" class="form-control mr-2" name="passengers" placeholder="Passengers">
+            <input type="number" class="form-control mr-2" name="minPrice" placeholder="Min Price">
+            <input type="number" class="form-control mr-2" name="maxPrice" placeholder="Max Price">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<!-- Sorting Dropdown -->
+<div class="mb-3">
+    <form asp-action="ViewAllCars" method="get" class="form-inline">
+        <div class="form-group">
+            <label for="sortOrder" class="mr-2">Sort By:</label>
+            <select id="sortOrder" name="sortOrder" onchange="this.form.submit()" class="form-control">
+                <option value="">Select...</option>
+                <option value="price_asc">Price (Low to High)</option>
+                <option value="price_desc">Price (High to Low)</option>
+                <option value="Year">Year (Oldest to Newest)</option>
+                <option value="year_desc">Year (Newest to Oldest)</option>
+                <option value="Passenger">Passengers (Fewest to Most)</option>
+                <option value="passenger_desc">Passengers (Most to Fewest)</option>
+                <option value="Available">Availability (Available First)</option>
+                <option value="available_desc">Availability (Not Available First)</option>
+            </select>
+        </div>
+    </form>
+</div>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Rental Price per Day</th>
+                <th>Year</th>
+                <th>Number of Passenger</th>
+                <th>Available</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Rental Companies</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var car in Model)
+            {
+                <tr>
+                    <td>@car.RentalPricePerDay.ToString("C")</td>
+                    <td>@car.Year</td>
+                    <td>@car.NumPassenger</td>
+                    <td>@(car.IsAvailable ? "Yes" : "No")</td>
+                    <td>@car.Make</td>
+                    <td>@car.Model</td>
+                    <td>@car.RentalCompanies</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@car.CarId" class="btn btn-info">Details</a>
+                        <a asp-action="Edit" asp-route-id="@car.CarId" class="btn btn-secondary">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@car.CarId" class="btn btn-danger">Delete</a>
+                        <a asp-action="BookCar" asp-route-carid="@car.CarId" class="btn btn-primary">Book Car</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No cars available.</p>
+}

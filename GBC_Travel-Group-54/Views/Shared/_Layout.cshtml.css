@@ -1,0 +1,96 @@
+﻿/* Base styles to ensure consistency and modern appearance */
+body, html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+/* Improved navbar styling for better visual separation and interactivity */
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.navbar-nav .nav-link {
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+    .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+        color: #007bff;
+    }
+
+/* Dropdown menu styling for better visibility and aesthetics */
+.dropdown-menu {
+    border-radius: 0;
+    border-color: #007bff;
+}
+
+.dropdown-item {
+    color: #333;
+}
+
+    .dropdown-item:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+/* Button enhancements for better user interaction feedback */
+.btn-primary, .btn-secondary {
+    border: 0;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+    .btn-primary:hover, .btn-secondary:hover {
+        background-color: #0056b3;
+        color: #ffffff;
+    }
+
+/* Footer improvements for a cleaner look and better structure */
+.footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #777;
+}
+
+    .footer a {
+        color: #007bff;
+    }
+
+        .footer a:hover {
+            text-decoration: none;
+        }
+
+/* Additional utility classes for layout and spacing */
+.container, .container-fluid {
+    padding: 0 15px;
+}
+
+.border-top, .border-bottom {
+    border-color: #dee2e6 !important; /* Lighter border color for subtlety */
+}
+
+.box-shadow {
+    box-shadow: 0 4px 6px rgba(0,0,0,.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        margin-top: 20px;
+    }
+
+    .footer {
+        text-align: center; /* Center footer content on smaller screens */
+    }
+}

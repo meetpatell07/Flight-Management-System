@@ -1,0 +1,53 @@
+﻿@model GBC_Travel_Group_54.Models.BookingFlight
+
+@{
+    ViewData["Title"] = "Create Booking";
+}
+
+<h2>Create Booking</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Flight Details</th>
+            <th>Passenger Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @if (Model.Flight != null)
+                {
+                    <strong>Departure Airport:</strong> @Model.Flight.DepartureAirport <br />
+                    <strong>Arrival Airport:</strong> @Model.Flight.ArrivalAirport <br />
+                    <strong>Airline:</strong> @Model.Flight.Airline <br />
+                    <strong>Departure DateTime:</strong> @Model.Flight.DepartureDateTime <br />
+                    <strong>Arrival DateTime:</strong> @Model.Flight.ArrivalDateTime <br />
+                    <strong>Price:</strong> @Model.Flight.Price <br />
+                }
+                else
+                {
+                    <p>No flight details available</p>
+                }
+            </td>
+            <td>
+                @if (Model.Passenger != null)
+                {
+                    <strong>Passenger ID:</strong> @Model.Passenger.PassengerId <br />
+                    <strong>First Name:</strong> @Model.Passenger.FirstName <br />
+                    <strong>Last Name:</strong> @Model.Passenger.LastName <br />
+                    <strong>Email:</strong> @Model.Passenger.Email <br />
+                    <!-- Add other passenger details as needed -->
+                }
+                else
+                {
+                    <p>No passenger details available</p>
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

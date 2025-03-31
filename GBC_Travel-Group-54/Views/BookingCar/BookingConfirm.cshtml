@@ -1,0 +1,58 @@
+﻿@model GBC_Travel_Group_54.Models.BookingCar
+
+@{
+    ViewData["Title"] = "Confirm Car Booking";
+}
+
+<h2>Confirm Car Booking</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Car Details</th>
+            <th>Passenger Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @if (Model.Car != null)
+                {
+                    <strong>Car Model:</strong> @Model.Car.Model <br />
+                    <strong>Make:</strong> @Model.Car.Make <br />
+                    <strong>Year:</strong> @Model.Car.Year <br />
+                    <strong>Rental Companies:</strong> @Model.Car.RentalCompanies <br />
+                    <strong>Rental Price Per Day:</strong> @Model.Car.RentalPricePerDay <br />
+                    <strong>Number of Passenger:</strong> @Model.Car.NumPassenger <br />
+                    <strong>PickUp DateTime:</strong> @Model.PickUpDate <br />
+                    <strong>DropOff DateTime:</strong> @Model.DropOffDate <br />
+                    <strong>Pick Up Location:</strong> @Model.PickUpLocation <br />
+                    <strong>Drop Off Location:</strong> @Model.DropOffLocation <br />
+                    <!-- Add other car details as needed -->
+                }
+                else
+                {
+                    <p>No car details available</p>
+                }
+            </td>
+            <td>
+                @if (Model.Passenger != null)
+                {
+                    <strong>Passenger ID:</strong> @Model.Passenger.PassengerId <br />
+                    <strong>First Name:</strong> @Model.Passenger.FirstName <br />
+                    <strong>Last Name:</strong> @Model.Passenger.LastName <br />
+                    <strong>Email:</strong> @Model.Passenger.Email <br />
+                    <!-- Add other passenger details as needed -->
+                }
+                else
+                {
+                    <p>No passenger details available</p>
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

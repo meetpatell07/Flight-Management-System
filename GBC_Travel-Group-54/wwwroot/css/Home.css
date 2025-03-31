@@ -1,0 +1,117 @@
+﻿/* home.css */
+
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Hero Section */
+.hero {
+    background: url('path_to_your_hero_image.jpg') no-repeat center center/cover;
+    color: #fff;
+    padding: 100px 0;
+    text-align: center;
+}
+
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        margin-bottom: 40px;
+    }
+
+    .hero .btn {
+        background-color: var(--primary-color);
+        color: #fff;
+        padding: 10px 30px;
+        text-decoration: none;
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+    }
+
+/* Featured Services */
+.services {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.service-item {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+    .service-item h3 {
+        margin-bottom: 20px;
+    }
+
+    .service-item img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+/* Testimonials */
+.testimonials {
+    background-color: #f8f9fa;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.testimonial {
+    margin: 20px;
+    padding: 20px;
+    display: inline-block;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+    .testimonial p {
+        font-style: italic;
+    }
+
+/* Special Offers */
+.offers {
+    margin: 40px 0;
+}
+
+.offer-item {
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+    .offer-item h3 {
+        margin-bottom: 15px;
+    }
+
+    .offer-item p {
+        line-height: 1.5;
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .services {
+        flex-direction: column;
+    }
+
+    .testimonial {
+        display: block;
+        width: 100%;
+    }
+}

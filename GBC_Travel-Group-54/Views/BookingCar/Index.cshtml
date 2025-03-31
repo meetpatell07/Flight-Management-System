@@ -1,0 +1,37 @@
+﻿@model List<GBC_Travel_Group_54.Models.BookingCar>
+
+<h1>Booking Cars</h1>
+
+@if (Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Car</th>
+                <th>Passenger</th>
+                <th>Destination</th>
+                <th>Pick-Up Date</th>
+                <th>Drop-Off Date</th>
+                <!-- Additional table headers -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model)
+            {
+                <tr>
+                    <td>@booking.BookingCarId</td>
+                    <td>@booking.Car.Make - @booking.Car.Model</td>
+                    <td>@booking.Passenger.FirstName @booking.Passenger.LastName</td>
+                    <td>@booking.PickUpLocation - @booking.DropOffLocation</td>
+                    <td>@booking.PickUpDate.ToShortDateString()</td>
+                    <td>@booking.DropOffDate.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No car bookings found.</p>
+}

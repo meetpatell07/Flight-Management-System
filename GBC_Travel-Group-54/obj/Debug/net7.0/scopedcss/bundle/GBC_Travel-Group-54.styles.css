@@ -1,0 +1,97 @@
+/* _content/GBC_Travel-Group-54/Views/Shared/_Layout.cshtml.rz.scp.css */
+/* Base styles to ensure consistency and modern appearance */
+body[b-ib5s2m0fvc], html[b-ib5s2m0fvc] {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+/* Improved navbar styling for better visual separation and interactivity */
+.navbar[b-ib5s2m0fvc] {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.navbar-brand[b-ib5s2m0fvc] {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.navbar-nav .nav-link[b-ib5s2m0fvc] {
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+    .navbar-nav .nav-link:hover[b-ib5s2m0fvc], .navbar-nav .nav-link.active[b-ib5s2m0fvc] {
+        color: #007bff;
+    }
+
+/* Dropdown menu styling for better visibility and aesthetics */
+.dropdown-menu[b-ib5s2m0fvc] {
+    border-radius: 0;
+    border-color: #007bff;
+}
+
+.dropdown-item[b-ib5s2m0fvc] {
+    color: #333;
+}
+
+    .dropdown-item:hover[b-ib5s2m0fvc] {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+/* Button enhancements for better user interaction feedback */
+.btn-primary[b-ib5s2m0fvc], .btn-secondary[b-ib5s2m0fvc] {
+    border: 0;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+    .btn-primary:hover[b-ib5s2m0fvc], .btn-secondary:hover[b-ib5s2m0fvc] {
+        background-color: #0056b3;
+        color: #ffffff;
+    }
+
+/* Footer improvements for a cleaner look and better structure */
+.footer[b-ib5s2m0fvc] {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #777;
+}
+
+    .footer a[b-ib5s2m0fvc] {
+        color: #007bff;
+    }
+
+        .footer a:hover[b-ib5s2m0fvc] {
+            text-decoration: none;
+        }
+
+/* Additional utility classes for layout and spacing */
+.container[b-ib5s2m0fvc], .container-fluid[b-ib5s2m0fvc] {
+    padding: 0 15px;
+}
+
+.border-top[b-ib5s2m0fvc], .border-bottom[b-ib5s2m0fvc] {
+    border-color: #dee2e6 !important; /* Lighter border color for subtlety */
+}
+
+.box-shadow[b-ib5s2m0fvc] {
+    box-shadow: 0 4px 6px rgba(0,0,0,.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-collapse[b-ib5s2m0fvc] {
+        margin-top: 20px;
+    }
+
+    .footer[b-ib5s2m0fvc] {
+        text-align: center; /* Center footer content on smaller screens */
+    }
+}

@@ -1,0 +1,40 @@
+﻿@model List<GBC_Travel_Group_54.Models.BookingFlight>
+
+<h1>Booking Flights</h1>
+
+@if (Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Flight</th>
+                <th>Airline</th>
+                <th>Departure Date</th>
+                <th>Arrival Date</th>
+                <th>Departure Location</th>
+                <th>Arrival Location</th>
+                <th>Passenger</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model)
+            {
+                <tr>
+                    <td>@booking.BookingFlightId</td>
+                    <td>@booking.Flight.FlightId - @booking.Flight.DepartureAirport to @booking.Flight.ArrivalAirport</td>
+                    <td>@booking.Flight.Airline</td>
+                    <td>@booking.Flight.DepartureDateTime.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>@booking.Flight.ArrivalDateTime.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>@booking.Flight.DepartureAirport</td>
+                    <td>@booking.Flight.ArrivalAirport</td>
+                    <td>@booking.Passenger.FirstName @booking.Passenger.LastName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No bookings found.</p>
+}

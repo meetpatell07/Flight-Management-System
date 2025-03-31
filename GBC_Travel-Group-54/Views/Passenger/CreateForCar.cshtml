@@ -1,0 +1,32 @@
+﻿@model GBC_Travel_Group_54.Models.Passenger
+
+@{
+    ViewData["Title"] = "Create Passenger for Car Booking";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="CreateForCar" method="post">
+    <input type="hidden" name="CarId" value="@ViewBag.CarId" />
+
+    <div class="form-group">
+        <label asp-for="FirstName" class="control-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LastName" class="control-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email" class="control-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Passenger</button>
+    <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Cancel</a>
+</form>

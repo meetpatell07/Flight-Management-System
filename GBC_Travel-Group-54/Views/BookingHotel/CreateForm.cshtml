@@ -1,0 +1,41 @@
+﻿@model GBC_Travel_Group_54.Models.BookingHotel
+
+<form asp-action="Create" method="post">
+    <input type="hidden" asp-for="HotelId" />
+    <input type="hidden" asp-for="PassengerId" />
+
+    <h2>Create Booking</h2>
+
+    @if (Model.Hotel != null)
+    {
+        <div>
+            <h3>Hotel Details</h3>
+            <p>Hotel Name : @Model.Hotel.Name</p>
+            <p>Location : @Model.Hotel.Location</p>
+            <p>Price Per Night: @Model.Hotel.PricingPerNight</p>
+        </div>
+    }
+
+    @if (Model.Passenger != null)
+    {
+        <div>
+            <h3>Passenger Details</h3>
+            <p>Name: @Model.Passenger.FirstName</p>
+            <p>Last Name: @Model.Passenger.LastName</p>
+            <p>Email: @Model.Passenger.Email</p>
+        </div>
+    }
+
+    <div>
+        <label for="CheckInDate">Check-in Date</label>
+        <input type="date" asp-for="CheckInDate" />
+    </div>
+
+    <div>
+        <label for="CheckOutDate">Check-out Date</label>
+        <input type="date" asp-for="CheckOutDate" />
+    </div>
+
+    <button type="submit">Create Booking</button>
+    <a asp-action="Index" asp-controller="Hotel" class="btn btn-primary">Cancel</a>
+</form>

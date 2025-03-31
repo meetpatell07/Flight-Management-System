@@ -1,0 +1,77 @@
+﻿@model GBC_Travel_Group_54.Models.Hotel
+@inject GBC_Travel_Group_54.Data.ApplicationDbContext _context
+
+@{
+    ViewData["Title"] = "Hotel Details";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <h4>Hotel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NumGuest)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumGuest)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PricingPerNight)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PricingPerNight)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+        <dt class="col-sm-2">
+            Amenities
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                var hotelAmenities = _context.HotelAmenities
+                .Where(ha => ha.HotelId == Model.HotelId)
+                .Select(ha => ha.Amenity)
+                .ToList();
+            }
+            @if (hotelAmenities != null && hotelAmenities.Any())
+            {
+                foreach (var amenity in hotelAmenities)
+                {
+                    <span>@amenity.AmenityName</span>
+
+                    <br />
+                }
+            }
+            else
+            {
+                <span>No amenities found.</span>
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

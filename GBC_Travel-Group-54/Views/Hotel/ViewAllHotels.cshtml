@@ -1,0 +1,96 @@
+﻿@model IEnumerable<GBC_Travel_Group_54.Models.Hotel>
+@inject GBC_Travel_Group_54.Data.ApplicationDbContext _context
+@{
+    ViewData["Title"] = "Hotels";
+}
+
+<h2>Hotels</h2>
+<a asp-action="Create" class="btn btn-primary">Add Hotel</a>
+<form asp-controller="Hotel" asp-action="ViewAllHotels" method="get" class="form-inline">
+    <div class="form-group">
+        <label for="searchKeyword">Search Location:</label>
+        <input type="text" name="searchKeyword" class="form-control" value="@ViewBag.CurrentFilter">
+    </div>
+    <div class="form-group">
+        <label for="numGuests">Minimum Guests:</label>
+        <input type="number" name="numGuests" class="form-control" value="@ViewBag.NumGuestsFilter">
+    </div>
+    <input type="number" class="form-control mr-2" name="minPrice" placeholder="Min Price">
+    <input type="number" class="form-control mr-2" name="maxPrice" placeholder="Max Price">
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+
+<form method="get" action="@Url.Action("ViewAllHotels")">
+    <select name="sortOrder" onchange="this.form.submit()">
+        <option value="">Sort By</option>
+        <option value="name_desc">Name Descending</option>
+        <option value="Location">Location Ascending</option>
+        <option value="location_desc">Location Descending</option>
+        <option value="Pricing">Pricing Ascending</option>
+        <option value="pricing_desc">Pricing Descending</option>
+        <option value="Rating">Rating Ascending</option>
+        <option value="rating_desc">Rating Descending</option>
+    </select>
+</form>
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Number Of Guests</th>
+                <th>Pricing Per Night</th>
+                <th>Rating</th>
+                <th>Amenities</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var hotel in Model)
+            {
+                <tr>
+                    <td>@hotel.Name</td>
+                    <td>@hotel.Location</td>
+                    <td>@hotel.NumGuest</td>
+                    <td>@hotel.PricingPerNight</td>
+                    <td>@hotel.Rating</td>
+                    <td>
+                        @{
+                            var hotelAmenities = _context.HotelAmenities
+                            .Where(ha => ha.HotelId == hotel.HotelId)
+                            .Select(ha => ha.Amenity)
+                            .ToList();
+                        }
+
+
+                        @if (hotelAmenities != null && hotelAmenities.Any())
+                        {
+                            foreach (var amenity in hotelAmenities)
+                            {
+                                <span>@amenity.AmenityName</span>
+                                <br />
+                            }
+                        }
+                        else
+                        {
+                            <span>No amenities</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@hotel.HotelId" class="btn btn-info">Details</a>
+                        <a asp-action="Edit" asp-route-id="@hotel.HotelId" class="btn btn-warning">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@hotel.HotelId" class="btn btn-danger">Delete</a>
+                        <a asp-action="BookHotel" asp-route-hotelId="@hotel.HotelId" class="btn btn-primary">Book Hotel</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hotels found.</p>
+}

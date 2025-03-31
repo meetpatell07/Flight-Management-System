@@ -1,0 +1,22 @@
+﻿@model GBC_Travel_Group_54.Models.Flight
+@{
+    ViewData["Title"] = "Delete Flight";
+}
+
+<h2>Delete Flight</h2>
+
+<div>
+    <h4>Are you sure you want to delete this flight?</h4>
+    <h4>Departure Airport: @Model.DepartureAirport</h4>
+    <h4>Arrival Airport: @Model.ArrivalAirport</h4>
+    <h4>Airline: @Model.Airline</h4>
+    <h4>Departure Date & Time: @Model.DepartureDateTime.ToString("yyyy-MM-dd HH:mm")</h4>
+    <h4>Arrival Date & Time: @Model.ArrivalDateTime.ToString("yyyy-MM-dd HH:mm")</h4>
+    <h4>Price: @Model.Price.ToString("C")</h4>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="FlightId" />
+    <input type="submit" value="Confirm Delete" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

@@ -1,0 +1,32 @@
+/* Base font size */
+html {
+  font-size: 14px; /* Default font size */
+}
+
+/* Increase font size on larger screens */
+@media (min-width: 768px) {
+  html {
+    font-size: 16px; /* Larger font size for wider screens */
+  }
+}
+
+/* Focus styles for buttons, form controls, and links */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  /* Add a white border and a blue box-shadow when focused */
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* Ensure content doesn't get hidden behind fixed-positioned elements */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/* Margin at the bottom of the body */
+body {
+  margin-bottom: 60px; /* Adjust as needed */
+}

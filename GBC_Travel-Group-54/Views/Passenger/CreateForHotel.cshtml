@@ -1,0 +1,34 @@
+﻿@model GBC_Travel_Group_54.Models.Passenger
+
+<h2>Create Passenger</h2>
+
+<form asp-action="CreateForHotel" method="post">
+    <input type="hidden" name="HotelId" value="@ViewData["HotelId"]">
+    <div class="form-group">
+        <label asp-for="FirstName" class="control-label">First Name:</label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName" class="control-label">Last Name:</label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email" class="control-label">Email:</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-warning">Cancel</a>
+
+    </div>
+   
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,57 @@
+﻿@model GBC_Travel_Group_54.Models.Car
+
+@{
+    ViewData["Title"] = "Edit Car";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="CarId" />
+    <div class="form-group">
+        <label asp-for="Make" class="control-label">Make:</label>
+        <input asp-for="Make" class="form-control" />
+        <span asp-validation-for="Make" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Model" class="control-label">Model:</label>
+        <input asp-for="Model" class="form-control" />
+        <span asp-validation-for="Model" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="NumPassenger" class="control-label">Passengers:</label>
+        <input asp-for="NumPassenger" class="form-control" />
+        <span asp-validation-for="NumPassenger" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Year" class="control-label">Year:</label>
+        <input asp-for="Year" class="form-control" />
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RentalCompanies" class="control-label">Rental Companies:</label>
+        <input asp-for="RentalCompanies" class="form-control" />
+        <span asp-validation-for="RentalCompanies" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RentalPricePerDay" class="control-label">Rental Price Per Day:</label>
+        <input asp-for="RentalPricePerDay" class="form-control" />
+        <span asp-validation-for="RentalPricePerDay" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <input asp-for="IsAvailable" class="form-check-input" />
+            <label class="form-check-label" asp-for="IsAvailable">Is Available</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-warning">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

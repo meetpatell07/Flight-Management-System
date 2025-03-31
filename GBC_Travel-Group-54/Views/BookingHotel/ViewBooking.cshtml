@@ -1,0 +1,38 @@
+﻿@model GBC_Travel_Group_54.Models.BookingHotel
+
+@{
+    ViewData["Title"] = "Hotel Booking Details";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (Model != null)
+{
+    <h3>Booking Information</h3>
+    <div>
+        <strong>Booking ID:</strong> @Model.BookingHotelId <br />
+        <strong>Check-in Date:</strong> @Model.CheckInDate.ToString("d") <br />
+        <strong>Check-out Date:</strong> @Model.CheckOutDate.ToString("d") <br />
+    </div>
+
+    <h3>Hotel Details</h3>
+    <div>
+        <strong>Name:</strong> @Model.Hotel.Name <br />
+        <strong>Location:</strong> @Model.Hotel.Location <br />
+        <strong>Number of Guests:</strong> @Model.Hotel.NumGuest <br />
+        <strong>Price Per Night:</strong> @Model.Hotel.PricingPerNight <br />
+        <strong>Rating:</strong> @Model.Hotel.Rating <br />
+    </div>
+
+    <h3>Passenger Details</h3>
+    <div>
+        <strong>Passenger ID:</strong> @Model.Passenger.PassengerId <br />
+        <strong>First Name:</strong> @Model.Passenger.FirstName <br />
+        <strong>Last Name:</strong> @Model.Passenger.LastName <br />
+        <strong>Email:</strong> @Model.Passenger.Email <br />
+    </div>
+}
+else
+{
+    <p>No booking details available.</p>
+}

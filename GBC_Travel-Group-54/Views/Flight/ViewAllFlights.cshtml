@@ -1,0 +1,80 @@
+﻿@model List<GBC_Travel_Group_54.Models.Flight>
+
+@{
+    ViewData["Title"] = "Admin Available Flights";
+}
+<a asp-action="Create" class="btn btn-primary">Add Flight</a>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Flight Booking System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <form asp-controller="Flight" asp-action="SearchFlights" method="post" class="form-inline ml-auto">
+            <input type="text" class="form-control mr-2" name="departureAirport" placeholder="Departure Airport">
+            <input type="text" class="form-control mr-2" name="arrivalAirport" placeholder="Arrival Airport">
+            <input type="date" class="form-control mr-2" name="departureDate" placeholder="Departure Date">
+            <input type="date" class="form-control mr-2" name="arrivalDate" placeholder="Arrival Date">
+            <input type="number" class="form-control mr-2" name="minPrice" placeholder="Min Price">
+            <input type="number" class="form-control mr-2" name="maxPrice" placeholder="Max Price">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="get" action="@Url.Action("ViewAllFlights")">
+    <select name="sortOrder" onchange="this.form.submit()">
+        <option value="">Sort By</option>
+        <option value="Price">Price Low to High</option>
+        <option value="price_desc">Price High to Low</option>
+        <option value="Departure">Departure Date Ascending</option>
+        <option value="departure_desc">Departure Date Descending</option>
+        <option value="Arrival">Arrival Date Ascending</option>
+        <option value="arrival_desc">Arrival Date Descending</option>
+    </select>
+</form>
+
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Departure Airport</th>
+                <th>Arrival Airport</th>
+                <th>Airline</th>
+                <th>Departure Date</th>
+                <th>Arrival Date</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in Model)
+            {
+                <tr>
+                    <td>@flight.DepartureAirport</td>
+                    <td>@flight.ArrivalAirport</td>
+                    <td>@flight.Airline</td>
+                    <td>@flight.DepartureDateTime.ToString("yyyy-MM-dd")</td>
+                    <td>@flight.ArrivalDateTime.ToString("yyyy-MM-dd")</td>
+                    <td>@flight.Price.ToString("C")</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@flight.FlightId" class="btn btn-info">Details</a>
+                        <a asp-action="Edit" asp-route-id="@flight.FlightId" class="btn btn-warning">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@flight.FlightId" class="btn btn-danger">Delete</a>
+                        <a asp-action="BookFlight" asp-route-flightId="@flight.FlightId" class="btn btn-primary">Book Flight</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No flights available</p>
+    <p>Try searching with different inputs</p>
+}

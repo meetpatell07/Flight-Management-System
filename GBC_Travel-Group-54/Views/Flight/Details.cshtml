@@ -1,0 +1,19 @@
+﻿@model GBC_Travel_Group_54.Models.Flight
+@{
+    ViewData["Title"] = "Flight Details";
+}
+
+<h2>Flight Details</h2>
+
+<div>
+    <h4>Airline: @Model.Airline</h4>
+    <h4>Departure Airport: @Model.DepartureAirport</h4>
+    <h4>Arrival Airport: @Model.ArrivalAirport</h4>
+    <h4>Departure Date & Time: @Model.DepartureDateTime.ToString("yyyy-MM-dd HH:mm")</h4>
+    <h4>Arrival Date & Time: @Model.ArrivalDateTime.ToString("yyyy-MM-dd HH:mm")</h4>
+    <h4>Price: @Model.Price.ToString("C")</h4>
+</div>
+
+<p>
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</p>

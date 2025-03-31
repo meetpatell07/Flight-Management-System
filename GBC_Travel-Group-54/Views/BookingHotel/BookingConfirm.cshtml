@@ -1,0 +1,49 @@
+﻿@model GBC_Travel_Group_54.Models.BookingHotel
+
+@{
+    ViewData["Title"] = "Create Booking";
+}
+
+<h2>Create Booking</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Hotel Details</th>
+            <th>Passenger Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @if (Model.Hotel != null)
+                {
+                    <strong>Hotel Name:</strong> @Model.Hotel.Name <br />
+                    <strong>Location :</strong> @Model.Hotel.Location <br />
+                    <strong>Price Per Night:</strong> @Model.Hotel.PricingPerNight <br />
+                }
+                else
+                {
+                    <p>No flight details available</p>
+                }
+            </td>
+            <td>
+                @if (Model.Passenger != null)
+                {
+                    <strong>Passenger ID:</strong> @Model.Passenger.PassengerId <br />
+                    <strong>First Name:</strong> @Model.Passenger.FirstName <br />
+                    <strong>Last Name:</strong> @Model.Passenger.LastName <br />
+                    <strong>Email:</strong> @Model.Passenger.Email <br />
+                }
+                else
+                {
+                    <p>No passenger details available</p>
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

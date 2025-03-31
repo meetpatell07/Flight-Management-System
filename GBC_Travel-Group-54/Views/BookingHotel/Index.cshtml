@@ -1,0 +1,40 @@
+﻿@model List<GBC_Travel_Group_54.Models.BookingHotel>
+
+<h1>Hotel Bookings</h1>
+
+@if (Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Hotel Name</th>
+                <th>Check-In Date</th>
+                <th>Check-Out Date</th>
+                <th>Location</th>
+                <th>Number of Guests</th>
+                <th>Price Per Night</th>
+                <th>Passenger</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model)
+            {
+                <tr>
+                    <td>@booking.BookingHotelId</td>
+                    <td>@booking.Hotel.Name</td>
+                    <td>@booking.CheckInDate.ToString("yyyy-MM-dd")</td>
+                    <td>@booking.CheckOutDate.ToString("yyyy-MM-dd")</td>
+                    <td>@booking.Hotel.Location</td>
+                    <td>@booking.Hotel.NumGuest</td>
+                    <td>@booking.Hotel.PricingPerNight</td>
+                    <td>@booking.Passenger.FirstName @booking.Passenger.LastName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No bookings found.</p>
+}
